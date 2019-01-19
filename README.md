@@ -1,4 +1,4 @@
-# URL Shortener Microservice API
+# URL Shortener Microservice
 
 
 1. POST a URL to [project_url]/api/shorturl/new and receive a shortened URL in the JSON response.
