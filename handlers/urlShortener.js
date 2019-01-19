@@ -28,7 +28,7 @@ exports.newUrl = (req, res) => {
   let host = protocolMatch[1];
   
   let hostMatch = host.match(hostReg);
-  console.log(hostMatch)
+  
   if(hostMatch) {
   dns.lookup(hostMatch[0], (err) => { 
     if(err) {res.json({error: "URL cannot be found"})
