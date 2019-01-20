@@ -37,7 +37,7 @@ exports.newUrl = (req, res) => {
                 resp !== null ? res.json(resp) : 
                 dbModels.create(newEntry, (err, data) => { err ? 
                     console.log("error ", err) :
-                  dbModels.findOneAndUpdate(newEntry, {$set: {newUrl: "https://url-shortener-gj.glitch.me/api/shorturl/" + data['shortUrl']}}, {new: true}, (req, resp) => { 
+                  dbModels.findOneAndUpdate(newEntry, {$set: {newUrl: 'https://smush.glitch.me/' + data['shortUrl']}}, {new: true}, (req, resp) => { 
                   dbModels.findOne(newEntry, "shortUrl originalUrl newUrl -_id",(req, resp) => { 
                   res.json(resp)})
                });

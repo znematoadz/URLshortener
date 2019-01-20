@@ -13,7 +13,7 @@ app.use(cors());
 
 // enable body-parser to parse the url data
 app.use( bodyParser.urlencoded({extended: false}))
-
+app.use(bodyParser.json());
 
 // setup front end routing
 app.use('/public', express.static(process.cwd() + '/public'));
@@ -23,9 +23,9 @@ app.get('/', function(req, res){
 });
 
 
-app.post('/api/shorturl/new', urlShortener.newUrl);
+app.post('/new', urlShortener.newUrl);
   
-app.get('/api/shorturl/:shortUrl', urlShortener.shortUrl);
+app.get('/:shortUrl', urlShortener.shortUrl);
 
 
 
