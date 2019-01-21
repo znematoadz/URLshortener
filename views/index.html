@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
    <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Smush URL Shortener</title>
-      <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon"/>
       <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
       <link href="/public/css/style.css" rel="stylesheet" type="text/css">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
    </head>
 
    <body class="d-flex justify-content-center align-items-center flex-column ">
-      <div class="col-xs-8 col-xl-6 text-center h-50">
+      <div class="col-xs-10 col-md-8 col-lg-6 text-center">
         
-     <div class="d-flex card shadow m-5">
+     <div class="d-flex card shadow m-5 bg-info">
         <h2 class="card-header " >URL Shortener Microservice</h2>
         
         <div class="card-body ">
         <form id="url-form" class="form-group " action="api/shorturl/new" method="POST">
           <div class="input-group"> 
-          <input id="url-input" class="input-group-prepend" type="text" name="url" placeholder="Shorten your url here">
-          <input class="form-control input-group-append bg-danger text-light btn btn-outline-secondary" type="submit" value="SMUSH it">
+          <input id="url-input" class="input-group-prepend form-control" type="text" name="url" placeholder="Shorten your url here">
+          <input class=" input-group-append bg-danger text-light btn btn-outline-secondary" type="submit" value="SMUSH it">
           </div>
         </form>
         
           
-        <p id="card-body">Your Smushed Url:</p>
-        <div id="short-url"  class="border border-secondary">
+        <span id="card-body">Your Smushed Url:</span>
+        <div id="short-url"  class="border border-secondary bg-light">
           ---
         </div>
           </div>
@@ -34,7 +34,7 @@
       </div>
       <div class="footer text-center">
         <p>
-          by Gerald Jones || Inspired by <a href="http://www.freecodecamp.com">freeCodeCamp</a>
+          by Gerald Jones || Inspired by <a href="http://www.freecodecamp.com" target="_blank" rel="noopener noreferrer">freeCodeCamp</a>
         </p>
       </div>
      

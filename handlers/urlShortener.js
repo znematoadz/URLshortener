@@ -1,7 +1,7 @@
 const dbModels = require('../models/dbModels.js');
 const dns = require('dns');
 
-
+// adding new url to db
 exports.newUrl = (req, res) => {
   
   let url = req.body.url;
@@ -9,26 +9,28 @@ exports.newUrl = (req, res) => {
  
   let newEntry = { originalUrl: url };
   
-  //remove protocol for dns lookup
+  //regex to check for dns lookup
   let hostReg = /^([a-z0-9\-_]+\.)+[a-z0-9\-_]+/i;
   
-  //regex to validate protocol format
+  //regex used to validate protocol format
   let protocolReg = /^https?:\/\/(.*)/i; 
   
+  //if url ends in a '/' this removes it to avoid duplicate urls in db
   if (url.match(/\/$/i)) {
     url = url.slice(0, -1);
   }
   
   
-  
+  // validate protocol
   let protocolMatch = url.match(protocolReg);
   if(!protocolMatch)  {
-    return res.json({ error: "Invalid URL" }) 
+    return res.json({ error: "Invalid URL - try adding http(s)://" }) 
   }
   let host = protocolMatch[1];
   
   let hostMatch = host.match(hostReg);
   
+  // dns lookup to validate url, if good checks db for match, if no match adds new url to db
   if(hostMatch) {
   dns.lookup(hostMatch[0], (err) => { 
     if(err) {res.json({error: "URL cannot be found"})
@@ -48,7 +50,7 @@ exports.newUrl = (req, res) => {
 }
 }
 
-
+// given shorlurl this redirects to original url from db
 exports.shortUrl = (req, res) => {
   dbModels.findOne(req.params, (err, data) => {
     err ? 
