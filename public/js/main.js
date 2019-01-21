@@ -1,16 +1,14 @@
 let urlInput = document.getElementById("url-input");
-               
-           let shortUrl = document.getElementById('short-url');
+let shortUrl = document.getElementById('short-url');
             
-       
-             document.getElementById("url-form").addEventListener('submit', (e) => {
-                e.preventDefault();
-                let APIUrl = window.location.href + "new";
-                let url = urlInput.value;
-                let data = {'url': url};
+function formHandler(e) {
+      e.preventDefault();
+      let url = window.location.href + "new";
+      let urlVal = urlInput.value;
+      let data = {'url': urlVal};
 
-                console.log(APIUrl)
-             fetch(APIUrl, {
+                
+             fetch(url, {
                           method: 'POST',
                           body: JSON.stringify(data),
                           headers: {
@@ -23,6 +21,7 @@ let urlInput = document.getElementById("url-input");
                       response.json().then((data) => {
                         if (data.error) {
                           console.log(data.error)
+                          shortUrl.innerText = data.error;
                         } else {
                           shortUrl.innerText = data.newUrl;
                         }
@@ -32,5 +31,7 @@ let urlInput = document.getElementById("url-input");
                 }
             }).catch(error => console.log(error));
 
-      });
+      }
+
+document.getElementById("url-form").addEventListener('submit', formHandler);
 
